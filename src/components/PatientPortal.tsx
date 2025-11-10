@@ -22,6 +22,7 @@ import { AIRecommendations } from './patient/AIRecommendations';
 import { MedicationCatalog } from './patient/MedicationCatalog';
 import { ShoppingCart as ShoppingCartView } from './patient/ShoppingCart';
 import { toast } from 'sonner';
+import { Chatbot } from './Chatbot';
 
 interface PatientPortalProps {
   patientName: string;
@@ -479,6 +480,7 @@ export function PatientPortal({ patientName, onLogout }: PatientPortalProps) {
           </div>
         </div>
       )}
+      <Chatbot userType="patient" userName={patientName} />
     </div>
   );
 }

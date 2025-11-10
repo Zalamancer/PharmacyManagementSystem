@@ -20,6 +20,7 @@ import { BillingView } from './pharmacy/BillingView';
 import { PatientManagement } from './pharmacy/PatientManagement';
 import { DashboardOverview } from './pharmacy/DashboardOverview';
 import { AIInsights } from './pharmacy/AIInsights';
+import { Chatbot } from './Chatbot';
 
 interface PharmacyDashboardProps {
   onLogout: () => void;
@@ -131,6 +132,7 @@ export function PharmacyDashboard({ onLogout }: PharmacyDashboardProps) {
           </TabsContent>
         </Tabs>
       </div>
+      <Chatbot userType="pharmacist" />
     </div>
   );
 }
