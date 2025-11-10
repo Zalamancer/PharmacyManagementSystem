@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -12,6 +13,8 @@ interface LoginProps {
 
 export function Login({ onLogin }: LoginProps) {
   const [patientName, setPatientName] = useState('');
+  const [pharmacistUsername, setPharmacistUsername] = useState('pharmacist@example.com');
+  const [pharmacistPassword, setPharmacistPassword] = useState('password');
   const [showMFA, setShowMFA] = useState(false);
   const [mfaCode, setMfaCode] = useState('');
 
@@ -74,11 +77,22 @@ export function Login({ onLogin }: LoginProps) {
                 <>
                   <div className="space-y-2">
                     <Label htmlFor="username">Username</Label>
-                    <Input id="username" placeholder="pharmacist@example.com" />
+                    <Input 
+                      id="username" 
+                      placeholder="pharmacist@example.com" 
+                      value={pharmacistUsername}
+                      onChange={(e) => setPharmacistUsername(e.target.value)}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="password">Password</Label>
-                    <Input id="password" type="password" placeholder="••••••••" />
+                    <Input 
+                      id="password" 
+                      type="password" 
+                      placeholder="••••••••" 
+                      value={pharmacistPassword}
+                      onChange={(e) => setPharmacistPassword(e.target.value)}
+                    />
                   </div>
                   <Button className="w-full" onClick={handlePharmacistLogin}>
                     Continue to MFA
