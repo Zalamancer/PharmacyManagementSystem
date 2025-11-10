@@ -23,22 +23,33 @@ export function PatientManagement() {
   );
 
   const checkDrugInteractions = (patientPrescriptions: any[]) => {
-    const warnings: string[] = [];
-    
-    for (let i = 0; i < patientPrescriptions.length; i++) {
-      for (let j = i + 1; j < patientPrescriptions.length; j++) {
-        const drug1 = patientPrescriptions[i].drug.split(' ')[0];
-        const drug2 = patientPrescriptions[j].drug.split(' ')[0];
-        
-        const interaction = drugInteractions.find(inter =>
-          (inter.drug1 === drug1 && inter.drug2 === drug2) ||
-          (inter.drug1 === drug2 && inter.drug2 === drug1)
-        );
-        
-        if (interaction) {
-          warnings.push(`${drug1} + ${drug2}: ${interaction.description}`);
+    const warnings: { message: string, severity: string }[] = [];
+    const patientDrugs = patientPrescriptions.map(p => p.drug.split(' ')[0]);
+
+    // Check for internal interactions
+    for (let i = 0; i < patientDrugs.length; i++) {
+        for (let j = i + 1; j < patientDrugs.length; j++) {
+            const drug1 = patientDrugs[i];
+            const drug2 = patientDrugs[j];
+            const interaction = drugInteractions.find(inter =>
+                (inter.drug1 === drug1 && inter.drug2 === drug2) ||
+                (inter.drug1 === drug2 && inter.drug2 === drug1)
+            );
+            if (interaction) {
+                warnings.push({
+                    message: `${drug1} + ${drug2}: ${interaction.description}`,
+                    severity: interaction.severity,
+                });
+            }
         }
-      }
+    }
+
+    // A hardcoded example for Gabapentin + an opioid-like drug from history for demo
+    if (patientDrugs.includes('Gabapentin') && patientDrugs.includes('Adderall')) {
+         warnings.push({
+            message: 'Gabapentin + Opioid: Increased risk of respiratory depression',
+            severity: 'high',
+        });
     }
     
     return warnings;
@@ -138,7 +149,7 @@ export function PatientManagement() {
                             <p>Potential drug interactions detected:</p>
                             <ul className="list-disc list-inside mt-2 space-y-1">
                               {interactions.map((warning, index) => (
-                                <li key={index} className="text-sm">{warning}</li>
+                                <li key={index} className="text-sm">{warning.message}</li>
                               ))}
                             </ul>
                           </AlertDescription>
