@@ -13,7 +13,7 @@ import {
 } from '../ui/table';
 import { Search, DollarSign, TrendingUp, FileText, Send } from 'lucide-react';
 import { patients } from '../../lib/mockData';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export function BillingView() {
   const [searchTerm, setSearchTerm] = useState('');

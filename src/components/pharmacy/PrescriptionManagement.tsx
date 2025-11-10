@@ -20,7 +20,7 @@ import {
 } from '../ui/select';
 import { Search, Filter, CheckCircle, AlertCircle, Clock } from 'lucide-react';
 import { patients } from '../../lib/mockData';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export function PrescriptionManagement() {
   const [searchTerm, setSearchTerm] = useState('');

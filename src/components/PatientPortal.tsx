@@ -21,7 +21,7 @@ import { SymptomQuestionnaire } from './patient/SymptomQuestionnaire';
 import { AIRecommendations } from './patient/AIRecommendations';
 import { MedicationCatalog } from './patient/MedicationCatalog';
 import { ShoppingCart as ShoppingCartView } from './patient/ShoppingCart';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 interface PatientPortalProps {
   patientName: string;

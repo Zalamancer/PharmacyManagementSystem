@@ -15,7 +15,7 @@ import {
 import { Alert, AlertDescription } from '../ui/alert';
 import { Search, Package, AlertTriangle, ShoppingCart, TrendingDown } from 'lucide-react';
 import { inventory } from '../../lib/mockData';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export function InventoryManagement() {
   const [searchTerm, setSearchTerm] = useState('');

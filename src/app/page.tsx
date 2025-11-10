@@ -1,9 +1,12 @@
+
+'use client';
+
 import { useState } from 'react';
 import { Login } from '@/components/Login';
 import { PharmacyDashboard } from '@/components/PharmacyDashboard';
 import { PatientPortal } from '@/components/PatientPortal';
 
-export default function App() {
+export default function Home() {
   const [userType, setUserType] = useState<'pharmacist' | 'patient' | null>(null);
   const [currentPatient, setCurrentPatient] = useState<string | null>(null);
 
