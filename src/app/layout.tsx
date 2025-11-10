@@ -1,9 +1,17 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-body',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-headline',
+});
 
 export const metadata: Metadata = {
   title: 'MediTrack Pro',
@@ -17,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
         {children}
         <Toaster />
       </body>
